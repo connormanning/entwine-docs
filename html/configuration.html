@@ -1,0 +1,933 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; entwine.io</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="entwine.io" href="index.html"/>
+        <link rel="next" title="Entwine Point Tile" href="entwine-point-tile.html"/>
+        <link rel="prev" title="Download" href="download.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Entwine
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input">input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output">output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tmp">tmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reprojection">reprojection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#threads">threads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#force">force</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datatype">dataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchytype">hierarchyType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#span">span</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alloworiginid">allowOriginId</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bounds">bounds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schema">schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trustheaders">trustHeaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#absolute">absolute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scale">scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run">run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subset">subset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overflowdepth">overflowDepth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overflowthreshold">overflowThreshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maxnodesize">maxNodeSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minnodesize">minNodeSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cachesize">cacheSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchystep">hierarchyStep</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scan">Scan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output-scan">output (scan)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#merge">Merge</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output-merge">output (merge)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#convert">Convert</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-convert">input (convert)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-convert">output (convert)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#colortype">colorType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#truncate">truncate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometricerrordivisor">geometricErrorDivisor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verbose">verbose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arbiter">arbiter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#s3">S3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cesium">Cesium</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="entwine-point-tile.html">Entwine Point Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presentations.html">Presentations</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Entwine</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Home</a> &raquo;</li>
+      
+    <li>Configuration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>Entwine provides 4 sub-commands for indexing point cloud data:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#build">build</a></td>
+<td>Generate an EPT dataset from point cloud data</td>
+</tr>
+<tr>
+<td><a href="#scan">scan</a></td>
+<td>Scan information about point cloud data before building</td>
+</tr>
+<tr>
+<td><a href="#merge">merge</a></td>
+<td>Merge datasets build as subsets</td>
+</tr>
+<tr>
+<td><a href="#convert">convert</a></td>
+<td>Convert an EPT dataset to a different format</td>
+</tr>
+</tbody>
+</table><p>These commands are invoked via the command line as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entwine</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Although most options to entwine commands are configurable via command line,
+each command accepts configuration via <a class="reference external" href="https://www.json.org/">JSON</a>.  A
+configuration file may be specified with the <code class="docutils literal notranslate"><span class="pre">-c</span></code> command line argument.</p>
+<p>Command line argument settings are applied in order, so earlier settings can be
+overwritten by later-specified settings.  This includes configuration file
+arguments, allowing them to be used as templates for common settings that may
+be overwritten with command line options.</p>
+<p>Internally, Entwine CLI invocation builds a JSON configuration that is passed
+along to the corresponding sub-command, so CLI arguments and their equivalent
+JSON configuration formats will be described for each command.  For example,
+with configuration file <code class="docutils literal notranslate"><span class="pre">config.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;~/data/chicago.laz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;~/entwine/chicago&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following Entwine invocations are equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entwine</span> <span class="n">build</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">data</span><span class="o">/</span><span class="n">chicago</span><span class="o">.</span><span class="n">laz</span> <span class="o">-</span><span class="n">o</span> <span class="o">~/</span><span class="n">entwine</span><span class="o">/</span><span class="n">chicago</span>
+<span class="n">entwine</span> <span class="n">build</span> <span class="o">-</span><span class="n">c</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Throughout Entwine, a wide variety of point cloud formats are supported as input
+data, as any <a class="reference external" href="https://pdal.io/stages/readers.html">PDAL-readable</a> format may be
+indexed.  Paths are not required to be local filesystem paths - they may be
+local, S3, GCS, Dropbox, or any other
+<a class="reference external" href="https://github.com/connormanning/arbiter">Arbiter-readable</a> format.</p>
+<p>Each command accepts some common options, detailed at <a class="reference external" href="#common">common</a>.</p>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">build</span></code> command is used to generate an
+<a class="reference external" href="https://github.com/connormanning/ept">Entwine Point Tile</a> (EPT) dataset from
+point cloud data.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#input">input</a></td>
+<td>Path(s) to build</td>
+</tr>
+<tr>
+<td><a href="#output">output</a></td>
+<td>Output directory</td>
+</tr>
+<tr>
+<td><a href="#tmp">tmp</a></td>
+<td>Temporary directory</td>
+</tr>
+<tr>
+<td><a href="#reprojection">reprojection</a></td>
+<td>Coordinate system reprojection</td>
+</tr>
+<tr>
+<td><a href="#threads">threads</a></td>
+<td>Number of parallel threads</td>
+</tr>
+<tr>
+<td><a href="#force">force</a></td>
+<td>Force a new build at this output</td>
+</tr>
+<tr>
+<td><a href="#datatype">dataType</a></td>
+<td>Point cloud data storage type</td>
+</tr>
+<tr>
+<td><a href="#hierarchytype">hierarchyType</a></td>
+<td>Hierarchy storage type</td>
+</tr>
+<tr>
+<td><a href="#span">span</a></td>
+<td>Voxel resolution in one dimension</td>
+</tr>
+<tr>
+<td><a href="#alloworiginid">allowOriginId</a></td>
+<td>Specify per-point source file tracking</td>
+</tr>
+<tr>
+<td><a href="#bounds">bounds</a></td>
+<td>Dataset bounds</td>
+</tr>
+<tr>
+<td><a href="#schema">schema</a></td>
+<td>Attributes to store</td>
+</tr>
+<tr>
+<td><a href="#trustheaders">trustHeaders</a></td>
+<td>Specify whether file headers are trustworthy</td>
+</tr>
+<tr>
+<td><a href="#absolute">absolute</a></td>
+<td>Set double precision spatial coordinates</td>
+</tr>
+<tr>
+<td><a href="#scale">scale</a></td>
+<td>Scaling factor for scaled integral coordinates</td>
+</tr>
+<tr>
+<td><a href="#run">run</a></td>
+<td>Insert a fixed number of files</td>
+</tr>
+<tr>
+<td><a href="#subset">subset</a></td>
+<td>Run a subset portion of a larger build</td>
+</tr>
+<tr>
+<td><a href="#overflowdepth">overflowDepth</a></td>
+<td>Depth at which nodes may contain overflow</td>
+</tr>
+<tr>
+<td><a href="#maxNodeSize">maxNodeSize</a></td>
+<td>Soft point count at which nodes may overflow</td>
+</tr>
+<tr>
+<td><a href="#minNodeSize">minNodeSize</a></td>
+<td>Soft minimum on the point count of nodes</td>
+</tr>
+<tr>
+<td><a href="#cacheSize">cacheSize</a></td>
+<td>Number of recently-unused nodes to hold in reserve</td>
+</tr>
+<tr>
+<td><a href="#hierarchystep">hierarchyStep</a></td>
+<td>Step size at which to split hierarchy files</td>
+</tr>
+</tbody>
+</table><div class="section" id="input">
+<h3>input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
+<p>The point cloud data paths to be indexed.  This may be a string, as in:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;~/data/autzen.laz&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>This string may be:</p>
+<ul class="simple">
+<li><p>a file path: <code class="docutils literal notranslate"><span class="pre">~/data/autzen.laz</span></code> or <code class="docutils literal notranslate"><span class="pre">s3://entwine.io/sample-data/red-rocks.laz</span></code></p></li>
+<li><p>a directory (non-recursive): <code class="docutils literal notranslate"><span class="pre">~/data</span></code> or <code class="docutils literal notranslate"><span class="pre">~/data/*</span></code></p></li>
+<li><p>a recursive directory: <code class="docutils literal notranslate"><span class="pre">~/data/**</span></code></p></li>
+<li><p>a scan output path: <code class="docutils literal notranslate"><span class="pre">~/entwine/scans/autzen.json</span></code></p></li>
+</ul>
+<p>This field may also be a JSON array of multiples of each of the above strings:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;input&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;autzen.laz&quot;</span><span class="p">,</span> <span class="s2">&quot;~/data/&quot;</span><span class="p">]</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Paths that do not contain PDAL-readable file extensions will be silently
+ignored.</p>
+</div>
+<div class="section" id="output">
+<h3>output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<p>A directory for Entwine to write its EPT output.  May be local or remote.</p>
+</div>
+<div class="section" id="tmp">
+<h3>tmp<a class="headerlink" href="#tmp" title="Permalink to this headline">¶</a></h3>
+<p>A local directory for Entwine’s temporary data.</p>
+</div>
+<div class="section" id="reprojection">
+<h3>reprojection<a class="headerlink" href="#reprojection" title="Permalink to this headline">¶</a></h3>
+<p>Coordinate system reprojection specification.  Specified as a JSON object with
+up to 3 keys.</p>
+<p>If only the output projection is specified, then the input coordinate system
+will be inferred from the file headers.  If no coordinate system information
+can be found, this file will not be inserted.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;reprojection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:3857&quot;</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>An input SRS may also be specified, which will be overridden by SRS information
+determined from file headers.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;reprojection&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:26915&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:3857&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To force an input SRS that overrides any file header information, the <code class="docutils literal notranslate"><span class="pre">hammer</span></code>
+key should be set to `true.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;reprojection&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:26915&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:3857&quot;</span> <span class="p">,</span>
+        <span class="nt">&quot;hammer&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="threads">
+<h3>threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h3>
+<p>Number of threads for parallelization.  By default, a third of these threads
+will be allocated to point insertion and the rest will perform serialization
+work.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;threads&quot;</span><span class="p">:</span> <span class="mi">9</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>This field may also be an array of two numbers explicitly setting the number of
+worker threads and serialization threads, with the worker threads specified
+first.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;threads&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="force">
+<h3>force<a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h3>
+<p>By default, if an Entwine index already exists at the <code class="docutils literal notranslate"><span class="pre">output</span></code> path, any new
+files from the <code class="docutils literal notranslate"><span class="pre">input</span></code> will be added to the existing index.  To force a new
+index instead, this field may be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;force&quot;</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="datatype">
+<h3>dataType<a class="headerlink" href="#datatype" title="Permalink to this headline">¶</a></h3>
+<p>Specification for the output storage type for point cloud data.  Currently
+acceptable values are <code class="docutils literal notranslate"><span class="pre">laszip</span></code> and <code class="docutils literal notranslate"><span class="pre">binary</span></code>.  For a <code class="docutils literal notranslate"><span class="pre">binary</span></code> selection, data
+is laid out according to the <a class="reference external" href="#schema">schema</a>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;dataType&quot;</span><span class="p">:</span> <span class="s2">&quot;laszip&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hierarchytype">
+<h3>hierarchyType<a class="headerlink" href="#hierarchytype" title="Permalink to this headline">¶</a></h3>
+<p>Specification for the hierarchy storage format.  Hierarchy information is
+always stored as JSON, but this field may indicate compression.  Currently
+acceptable values are <code class="docutils literal notranslate"><span class="pre">json</span></code> and <code class="docutils literal notranslate"><span class="pre">gzip</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;hierarchyType&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="span">
+<h3>span<a class="headerlink" href="#span" title="Permalink to this headline">¶</a></h3>
+<p>Number of voxels in each spatial dimension which defines the grid size of the
+octree.  For example, a <code class="docutils literal notranslate"><span class="pre">span</span></code> value of <code class="docutils literal notranslate"><span class="pre">256</span></code> results in a <code class="docutils literal notranslate"><span class="pre">256</span> <span class="pre">*</span> <span class="pre">256</span> <span class="pre">*</span> <span class="pre">256</span></code>
+cubic resolution.</p>
+</div>
+<div class="section" id="alloworiginid">
+<h3>allowOriginId<a class="headerlink" href="#alloworiginid" title="Permalink to this headline">¶</a></h3>
+<p>For lossless capability, Entwine inserts an OriginId dimension tracking each
+point back to their original source file.  If this value is present and set to
+<code class="docutils literal notranslate"><span class="pre">false</span></code>, this behavior will be disabled.</p>
+</div>
+<div class="section" id="bounds">
+<h3>bounds<a class="headerlink" href="#bounds" title="Permalink to this headline">¶</a></h3>
+<p>Total bounds for all points to be index.  These bounds are final, in that they
+may not be expanded later after indexing has begun.  Typically this field does
+not need to be supplied as it will be inferred from the data itself.  This field
+is specified as an array of the format <code class="docutils literal notranslate"><span class="pre">[xmin,</span> <span class="pre">ymin,</span> <span class="pre">zmin,</span> <span class="pre">xmax,</span> <span class="pre">ymax,</span> <span class="pre">zmax]</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="schema">
+<h3>schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h3>
+<p>An array of objects representing the dimensions to be stored in the output.
+Each dimension is specified with a string <code class="docutils literal notranslate"><span class="pre">name</span></code> and a string <code class="docutils literal notranslate"><span class="pre">type</span></code>.  Typically
+this field does not need to be specified as it will be inferred from the data
+itself.</p>
+<p>Valid <code class="docutils literal notranslate"><span class="pre">type</span></code> values are: <code class="docutils literal notranslate"><span class="pre">int8</span></code>, <code class="docutils literal notranslate"><span class="pre">int16</span></code>, <code class="docutils literal notranslate"><span class="pre">int32</span></code>, <code class="docutils literal notranslate"><span class="pre">int64</span></code>, <code class="docutils literal notranslate"><span class="pre">uint8</span></code>, <code class="docutils literal notranslate"><span class="pre">uint16</span></code>,
+<code class="docutils literal notranslate"><span class="pre">uint32</span></code>, <code class="docutils literal notranslate"><span class="pre">uint64</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, and <code class="docutils literal notranslate"><span class="pre">double</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint32&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint32&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint32&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Intensity&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int8&quot;</span> <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trustheaders">
+<h3>trustHeaders<a class="headerlink" href="#trustheaders" title="Permalink to this headline">¶</a></h3>
+<p>By default, file headers for point cloud formats that contain information like
+number of points and bounds are considered trustworthy.  If file headers are
+known to be incorrect, this value can be set to <code class="docutils literal notranslate"><span class="pre">false</span></code> to require a deep scan
+of all the points in each file.</p>
+</div>
+<div class="section" id="absolute">
+<h3>absolute<a class="headerlink" href="#absolute" title="Permalink to this headline">¶</a></h3>
+<p>Scaled values at a fixed precision are preferred by Entwine (and required for
+the <code class="docutils literal notranslate"><span class="pre">laszip</span></code> <a class="reference external" href="#dataType">dataType</a>).  To use absolute double-precision values
+for XYZ instead, this value may be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</div>
+<div class="section" id="scale">
+<h3>scale<a class="headerlink" href="#scale" title="Permalink to this headline">¶</a></h3>
+<p>A scale factor for the spatial coordinates of the output.  An offset will be
+determined automatically.  May be a number like <code class="docutils literal notranslate"><span class="pre">0.01</span></code>, or a 3-length array of
+numbers for non-uniform scaling.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;scale&quot;</span><span class="p">:</span> <span class="mf">0.01</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;scale&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">]</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run">
+<h3>run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h3>
+<p>If a build should not run to completion of all input files, a <code class="docutils literal notranslate"><span class="pre">run</span></code> count may be
+specified to run a fixed maximum number of files.  The build may be continued
+by providing the same <code class="docutils literal notranslate"><span class="pre">output</span></code> value to a later build.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;run&quot;</span><span class="p">:</span> <span class="mi">25</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subset">
+<h3>subset<a class="headerlink" href="#subset" title="Permalink to this headline">¶</a></h3>
+<p>Entwine builds may be split into multiple subset tasks, and then be merged later
+with the <a class="reference external" href="#merge">merge</a> command.  Subset builds must contain exactly the same
+configuration aside from this <code class="docutils literal notranslate"><span class="pre">subset</span></code> field.</p>
+<p>Subsets are specified with a 1-based <code class="docutils literal notranslate"><span class="pre">id</span></code> for the task ID and an <code class="docutils literal notranslate"><span class="pre">of</span></code> key for
+the total number of tasks.  The total number of tasks must be a power of 4.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;subset&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;of&quot;</span><span class="p">:</span> <span class="mi">16</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="overflowdepth">
+<h3>overflowDepth<a class="headerlink" href="#overflowdepth" title="Permalink to this headline">¶</a></h3>
+<p>There may be performance benefits by not allowing nodes near the top of the
+octree to contain overflow.  The depth at which overflow may begin is
+specified by this parameter.</p>
+</div>
+<div class="section" id="overflowthreshold">
+<h3>overflowThreshold<a class="headerlink" href="#overflowthreshold" title="Permalink to this headline">¶</a></h3>
+<p>For nodes at depths of at least the <code class="docutils literal notranslate"><span class="pre">overflowDepth</span></code>, this parameter specifies
+the threshold at which they will split into bisected child nodes.</p>
+</div>
+<div class="section" id="maxnodesize">
+<h3>maxNodeSize<a class="headerlink" href="#maxnodesize" title="Permalink to this headline">¶</a></h3>
+<p>A soft limit on the maximum number of points that may be stored in a data node.
+This limit is only applicable to points that are “overflow” for a node - so
+points that fit natively in the <code class="docutils literal notranslate"><span class="pre">span</span> <span class="pre">*</span> <span class="pre">span</span> <span class="pre">*</span> <span class="pre">span</span></code> grid can grow beyond this
+size.</p>
+</div>
+<div class="section" id="minnodesize">
+<h3>minNodeSize<a class="headerlink" href="#minnodesize" title="Permalink to this headline">¶</a></h3>
+<p>A limit on the minimum number of points that may reside in a dedicated node.
+For would-be nodes containing less than this number, they will be grouped in
+with their parent node.</p>
+</div>
+<div class="section" id="cachesize">
+<h3>cacheSize<a class="headerlink" href="#cachesize" title="Permalink to this headline">¶</a></h3>
+<p>When data nodes have not been touched recently during point insertion, they are
+eligible for serialization.  This parameter specifies the number of unused
+nodes that may be held in memory before serialization, so that if they are used
+again soon enough they won’t need to be serialized and then reawakened from
+remote storage.</p>
+</div>
+<div class="section" id="hierarchystep">
+<h3>hierarchyStep<a class="headerlink" href="#hierarchystep" title="Permalink to this headline">¶</a></h3>
+<p>For large datasets with lots of data files, the
+<a class="reference external" href="https://github.com/connormanning/entwine/blob/ept/doc/entwine-point-tile.md#hierarchy">hierarchy</a>
+describing the octree layout is split up to avoid large downloads.  This value
+describes the depth modulo at which hierarchy files are split up into child
+files.  In general, this should be set only for testing purposes as Entwine will
+heuristically determine a value if the output hierarchy is large enough to
+warrant splitting.</p>
+</div>
+</div>
+<div class="section" id="scan">
+<h2>Scan<a class="headerlink" href="#scan" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">scan</span></code> command is used to aggregate information about unindexed point cloud
+data prior to building an Entwine Point Tile dataset.</p>
+<p>Most options here are common to <code class="docutils literal notranslate"><span class="pre">build</span></code> and perform exactly the same function in
+the <code class="docutils literal notranslate"><span class="pre">scan</span></code> command, aside from <code class="docutils literal notranslate"><span class="pre">output</span></code>, described below.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#input">input</a></td>
+<td>Path(s) to build</td>
+</tr>
+<tr>
+<td><a href="#output-scan">output</a></td>
+<td>Output directory</td>
+</tr>
+<tr>
+<td><a href="#tmp">tmp</a></td>
+<td>Temporary directory</td>
+</tr>
+<tr>
+<td><a href="#reprojection">reprojection</a></td>
+<td>Coordinate system reprojection</td>
+</tr>
+<tr>
+<td><a href="#threads">threads</a></td>
+<td>Number of parallel threads</td>
+</tr>
+<tr>
+<td><a href="#trustheaders">trustHeaders</a></td>
+<td>Specify whether file headers are trustworthy</td>
+</tr>
+</tbody>
+</table><div class="section" id="output-scan">
+<h3>output (scan)<a class="headerlink" href="#output-scan" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> for a scan is a file path to write detailed summary information
+determined by the scan, including per-file metadata.  This output file, in JSON
+format, may be used as the <code class="docutils literal notranslate"><span class="pre">input</span></code> for a <a class="reference external" href="#build">build</a> command.</p>
+</div>
+</div>
+<div class="section" id="merge">
+<h2>Merge<a class="headerlink" href="#merge" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">merge</span></code> command is used to combine <a class="reference external" href="#subset">subset</a> builds into a full
+Entwine Point Tile dataset.  All subsets must be completed.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#output-merge">output</a></td>
+<td>Output directory of subsets</td>
+</tr>
+<tr>
+<td><a href="#tmp">tmp</a></td>
+<td>Temporary directory</td>
+</tr>
+<tr>
+<td><a href="#threads">threads</a></td>
+<td>Number of parallel threads</td>
+</tr>
+</tbody>
+</table><div class="section" id="output-merge">
+<h3>output (merge)<a class="headerlink" href="#output-merge" title="Permalink to this headline">¶</a></h3>
+<p>The output path must be a directory containing <code class="docutils literal notranslate"><span class="pre">n</span></code> completed subset builds,
+where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the <code class="docutils literal notranslate"><span class="pre">of</span></code> value from the subset specification.</p>
+</div>
+</div>
+<div class="section" id="convert">
+<h2>Convert<a class="headerlink" href="#convert" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">convert</span></code> command provides utilities to transform Entwine Point Tile output
+into other formats.  Currently the only conversion provided is to the
+<a class="reference external" href="https://github.com/AnalyticalGraphicsInc/3d-tiles">Cesium 3D Tiles</a> format.
+For proper positioning, data must be reprojected to <code class="docutils literal notranslate"><span class="pre">EPSG:4978</span></code> during the
+<code class="docutils literal notranslate"><span class="pre">entwine</span> <span class="pre">build</span></code> step.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#input-convert">input</a></td>
+<td>Directory containing a completed Entwine build</td>
+</tr>
+<tr>
+<td><a href="#output-convert">output</a></td>
+<td>Output directory for the converted dataset</td>
+</tr>
+<tr>
+<td><a href="#tmp">tmp</a></td>
+<td>Temporary directory</td>
+</tr>
+<tr>
+<td><a href="#threads">threads</a></td>
+<td>Number of parallel threads</td>
+</tr>
+<tr>
+<td><a href="#colorType">colorType</a></td>
+<td>Color selection for output tileset</td>
+</tr>
+<tr>
+<td><a href="#truncate">truncate</a></td>
+<td>Truncate color values to one byte</td>
+</tr>
+<tr>
+<td><a href="#geometricerrordivisor">geometricErrorDivisor</a></td>
+<td>Geometric error divisor</td>
+</tr>
+</tbody>
+</table><div class="section" id="input-convert">
+<h3>input (convert)<a class="headerlink" href="#input-convert" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">input</span></code> to a <code class="docutils literal notranslate"><span class="pre">convert</span></code> command is the path of a directory containing a
+completed Entwine build.</p>
+</div>
+<div class="section" id="output-convert">
+<h3>output (convert)<a class="headerlink" href="#output-convert" title="Permalink to this headline">¶</a></h3>
+<p>Output directory in which to write the converted dataset.</p>
+</div>
+<div class="section" id="colortype">
+<h3>colorType<a class="headerlink" href="#colortype" title="Permalink to this headline">¶</a></h3>
+<p>An optional setting to select a coloring method for the output.  If omitted,
+RGB will be used if they exist in the input, or Intensity if it exists and RGB
+does not exist.  If neither exist and no <code class="docutils literal notranslate"><span class="pre">colorType</span></code> is provided, then the
+output tileset will not contain color.</p>
+<p>If set, valid values to color the RGB in the output are:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>RGB is omitted</td>
+</tr>
+<tr>
+<td><code>rgb</code></td>
+<td>Color values from the input</td>
+</tr>
+<tr>
+<td><code>intensity</code></td>
+<td>Grayscale intensity values</td>
+</tr>
+<tr>
+<td><code>tile</code></td>
+<td>Each tile is randomly colored</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="truncate">
+<h3>truncate<a class="headerlink" href="#truncate" title="Permalink to this headline">¶</a></h3>
+<p>Cesium accepts one-byte color values, but many formats allow two-byte storage
+of intensities and RGB values.  If the input data contains values to be colored
+as RGB values that are greater than <code class="docutils literal notranslate"><span class="pre">255</span></code>, then they may be scaled down to one
+byte with the <code class="docutils literal notranslate"><span class="pre">--truncate</span></code> flag.</p>
+</div>
+<div class="section" id="geometricerrordivisor">
+<h3>geometricErrorDivisor<a class="headerlink" href="#geometricerrordivisor" title="Permalink to this headline">¶</a></h3>
+<p>The root geometric error is determined as <code class="docutils literal notranslate"><span class="pre">cubeWidth</span> <span class="pre">/</span> <span class="pre">geometricErrorDivisor</span></code>,
+which defaults to <code class="docutils literal notranslate"><span class="pre">32.0</span></code>.  Lower values will cause Cesium to render the data
+more densely.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;geometricErrorDivisor&quot;</span><span class="p">:</span> <span class="mf">16.0</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="common">
+<h2>Common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#verbose">verbose</a></td>
+<td>Enable verbose output</td>
+</tr>
+<tr>
+<td><a href="#arbiter">arbiter</a></td>
+<td>Remote file access settings for S3, GCS, Dropbox, etc.</td>
+</tr>
+</tbody>
+</table><div class="section" id="verbose">
+<h3>verbose<a class="headerlink" href="#verbose" title="Permalink to this headline">¶</a></h3>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>, and setting to <code class="docutils literal notranslate"><span class="pre">true</span></code> will enable a more verbose output to STDOUT.</p>
+</div>
+<div class="section" id="arbiter">
+<h3>arbiter<a class="headerlink" href="#arbiter" title="Permalink to this headline">¶</a></h3>
+<p>This value may be set to an object representing settings for remote file access.  Amazon S3, Google Cloud Storage, and Dropbox settings can be placed here to be passed along to <a class="reference external" href="https://github.com/connormanning/arbiter">Arbiter</a>.  Some examples follow.</p>
+<p>Enable Amazon S3 server-side encryption for the default profile:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;arbiter&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;s3&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sse&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Enable IO between multiple S3 buckets with different authentication settings.  Profiles other than <code class="docutils literal notranslate"><span class="pre">default</span></code> must use prefixed paths of the form <code class="docutils literal notranslate"><span class="pre">profile&#64;s3://&lt;path&gt;</span></code>, for example <code class="docutils literal notranslate"><span class="pre">second&#64;s3://lidar-data/usa</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;arbiter&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;s3&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;profile&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;access&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;access key here&gt;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;secret key here&gt;&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;profile&quot;</span><span class="p">:</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;access&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;access key here&gt;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;secret key here&gt;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;eu-central-1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;sse&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Setting the S3 profile is also accessible via command line with <code class="docutils literal notranslate"><span class="pre">--profile</span> <span class="pre">&lt;profile&gt;</span></code>, and server-side encryption can be enabled by using <code class="docutils literal notranslate"><span class="pre">--sse</span></code>.</p>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="s3">
+<h3>S3<a class="headerlink" href="#s3" title="Permalink to this headline">¶</a></h3>
+<p>Entwine can read and write S3 paths.  The simplest way to make use of this
+functionality is to install <a class="reference external" href="https://aws.amazon.com/cli/">AWSCLI</a> and run
+<code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">configure</span></code>, which will write credentials to <code class="docutils literal notranslate"><span class="pre">~/.aws</span></code>.</p>
+<p>If you’re using Docker, you’ll need to map that directory as a volume.
+Entwine’s Docker container runs as user <code class="docutils literal notranslate"><span class="pre">root</span></code>, so that mapping is as simple as
+adding <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">~/.aws:/root/.aws</span></code> to your <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> invocation.</p>
+</div>
+<div class="section" id="cesium">
+<h3>Cesium<a class="headerlink" href="#cesium" title="Permalink to this headline">¶</a></h3>
+<p>Creating 3D Tiles point cloud datasets for display in Cesium is a two-step
+process.</p>
+<p>First, an Entwine Point Tile datset must be created with an output projection of
+earth-centered earth-fixed, i.e. <code class="docutils literal notranslate"><span class="pre">EPSG:4978</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">entwine</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">v</span> <span class="o">~/</span><span class="n">entwine</span><span class="p">:</span><span class="o">/</span><span class="n">entwine</span> <span class="n">connormanning</span><span class="o">/</span><span class="n">entwine</span> <span class="n">build</span> \
+    <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">entwine</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">sample</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">autzen</span><span class="o">.</span><span class="n">laz</span> \
+    <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">entwine</span><span class="o">/</span><span class="n">autzen</span><span class="o">-</span><span class="n">ecef</span> \
+    <span class="o">-</span><span class="n">r</span> <span class="n">EPSG</span><span class="p">:</span><span class="mi">4978</span>
+</pre></div>
+</div>
+<p>Then, <code class="docutils literal notranslate"><span class="pre">entwine</span> <span class="pre">convert</span></code> must be run to create a 3D Tiles tileset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">v</span> <span class="o">~/</span><span class="n">entwine</span><span class="p">:</span><span class="o">/</span><span class="n">entwine</span> <span class="n">connormanning</span><span class="o">/</span><span class="n">entwine</span> <span class="n">convert</span> \
+    <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">entwine</span><span class="o">/</span><span class="n">autzen</span><span class="o">-</span><span class="n">ecef</span> \
+    <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">entwine</span><span class="o">/</span><span class="n">cesium</span><span class="o">/</span><span class="n">autzen</span>
+</pre></div>
+</div>
+<p>Statically serve the tileset locally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">v</span> <span class="o">~/</span><span class="n">entwine</span><span class="o">/</span><span class="n">cesium</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8080</span><span class="p">:</span><span class="mi">8080</span> \
+    <span class="n">connormanning</span><span class="o">/</span><span class="n">http</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>And browse the tileset with
+<a class="reference external" href="http://cesium.entwine.io/?url=http://localhost:8080/autzen/tileset.json">Cesium</a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="entwine-point-tile.html" class="btn btn-neutral float-right" title="Entwine Point Tile" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="download.html" class="btn btn-neutral" title="Download" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+                    &copy;  2019
+                        <a href="https://hobu.co">Hobu, Inc.</a>,
+      Last updated on Jun 12, 2019.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
