@@ -439,8 +439,10 @@ index instead, this field may be set to <code class="docutils literal notranslat
 <div class="section" id="datatype">
 <h3>dataType<a class="headerlink" href="#datatype" title="Permalink to this headline">¶</a></h3>
 <p>Specification for the output storage type for point cloud data.  Currently
-acceptable values are <code class="docutils literal notranslate"><span class="pre">laszip</span></code> and <code class="docutils literal notranslate"><span class="pre">binary</span></code>.  For a <code class="docutils literal notranslate"><span class="pre">binary</span></code> selection, data
-is laid out according to the <a class="reference external" href="#schema">schema</a>.</p>
+acceptable values are <code class="docutils literal notranslate"><span class="pre">laszip</span></code>, <code class="docutils literal notranslate"><span class="pre">zstandard</span></code>, and <code class="docutils literal notranslate"><span class="pre">binary</span></code>.  For a <code class="docutils literal notranslate"><span class="pre">binary</span></code>
+selection, data is laid out according to the <a class="reference external" href="#schema">schema</a>.  Zstandard
+data consists of binary data according to the <a class="reference external" href="#schema">schema</a> that is then
+compressed with <a class="reference external" href="https://facebook.github.io/zstd/">Zstandard</a> compression.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;dataType&quot;</span><span class="p">:</span> <span class="s2">&quot;laszip&quot;</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -881,7 +883,7 @@ earth-centered earth-fixed, i.e. <code class="docutils literal notranslate"><spa
     <p>
                     &copy;  2019
                         <a href="https://hobu.co">Hobu, Inc.</a>,
-      Last updated on Jun 27, 2019.
+      Last updated on Jul 09, 2019.
 
     </p>
   </div> 
