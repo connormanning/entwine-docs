@@ -168,11 +168,10 @@ catalog.</p>
 <p>Make an Entwine data directory at <code class="docutils literal notranslate"><span class="pre">entwine</span></code> and use Entwine to fetch
 the Red Rocks Amphitheatre dataset from the internet and build an
 <a class="reference external" href="https://entwine.io/entwine-point-tile.html">EPT</a> dataset of it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">entwine</span>
-<span class="n">entwine</span> <span class="n">build</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">entwine</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">red</span><span class="o">-</span><span class="n">rocks</span><span class="o">.</span><span class="n">laz</span> <span class="o">-</span><span class="n">o</span> <span class="n">entwine</span><span class="o">/</span><span class="n">red</span><span class="o">-</span><span class="n">rocks</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entwine</span> <span class="n">build</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">entwine</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">red</span><span class="o">-</span><span class="n">rocks</span><span class="o">.</span><span class="n">laz</span> <span class="o">-</span><span class="n">o</span> <span class="o">~/</span><span class="n">entwine</span><span class="o">/</span><span class="n">red</span><span class="o">-</span><span class="n">rocks</span>
 </pre></div>
 </div>
-<p>Now we have our output at <code class="docutils literal notranslate"><span class="pre">entwine/red-rocks</span></code>. We could have also
+<p>Now we have our output at <code class="docutils literal notranslate"><span class="pre">~/entwine/red-rocks</span></code>. We could have also
 passed a directory like <code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">~/nyc/</span></code> to index multiple files.
 Now we can statically serve the <code class="docutils literal notranslate"><span class="pre">entwine</span></code> directory with an HTTP server
 and visualize it with the WebGL-based <a class="reference external" href="http://potree.org">Potree</a> and <a class="reference external" href="https://github.com/hobu/plasio.js">Plasio</a> projects.</p>
@@ -246,7 +245,7 @@ producing <a class="reference external" href="https://github.com/AnalyticalGraph
     <p>
                     &copy;  2019
                         <a href="https://hobu.co">Hobu, Inc.</a>,
-      Last updated on Jul 18, 2019.
+      Last updated on Jul 23, 2019.
 
     </p>
   </div> 
