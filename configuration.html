@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#input">input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#output">output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tmp">tmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#srs">srs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reprojection">reprojection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#threads">threads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#force">force</a></li>
@@ -276,6 +277,10 @@ point cloud data.</p>
 <td>Temporary directory</td>
 </tr>
 <tr>
+<td><a href="#srs">srs</a></td>
+<td>Output coordinate system</td>
+</tr>
+<tr>
 <td><a href="#reprojection">reprojection</a></td>
 <td>Coordinate system reprojection</td>
 </tr>
@@ -380,13 +385,21 @@ ignored.</p>
 <h3>tmp<a class="headerlink" href="#tmp" title="Permalink to this headline">¶</a></h3>
 <p>A local directory for Entwine’s temporary data.</p>
 </div>
+<div class="section" id="srs">
+<h3>srs<a class="headerlink" href="#srs" title="Permalink to this headline">¶</a></h3>
+<p>Specification for the output coordinate system.  Setting this value does not
+invoke a reprojection, it simply sets the <code class="docutils literal notranslate"><span class="pre">srs</span></code> field in the resulting EPT
+metadata.</p>
+<p>If input files have coordinate systems specified (and they all match), then this
+will typically be inferred from the files themselves.</p>
+</div>
 <div class="section" id="reprojection">
 <h3>reprojection<a class="headerlink" href="#reprojection" title="Permalink to this headline">¶</a></h3>
 <p>Coordinate system reprojection specification.  Specified as a JSON object with
 up to 3 keys.</p>
 <p>If only the output projection is specified, then the input coordinate system
 will be inferred from the file headers.  If no coordinate system information
-can be found, this file will not be inserted.</p>
+can be found for a given file, then this file will not be inserted.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;reprojection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;out&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:3857&quot;</span> <span class="p">}</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -411,6 +424,9 @@ key should be set to `true.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>When using this option, the <code class="docutils literal notranslate"><span class="pre">output</span></code> value will be set as the coordinate system
+in the resulting EPT metadata, so the <code class="docutils literal notranslate"><span class="pre">srs</span></code> option does not need to be
+specified.</p>
 </div>
 <div class="section" id="threads">
 <h3>threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h3>
@@ -610,6 +626,10 @@ the <code class="docutils literal notranslate"><span class="pre">scan</span></co
 <tr>
 <td><a href="#tmp">tmp</a></td>
 <td>Temporary directory</td>
+</tr>
+<tr>
+<td><a href="#srs">srs</a></td>
+<td>Output coordinate system</td>
 </tr>
 <tr>
 <td><a href="#reprojection">reprojection</a></td>
